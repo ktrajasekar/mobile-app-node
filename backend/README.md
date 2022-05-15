@@ -17,3 +17,27 @@ Getting Started
 Follow the [Set up Your Project](https://www.mongodb.com/docs/drivers/node/current/quick-start/#set-up-your-project)
 section in the Quick Start guide.
 
+
+=================
+### Check MongoDB Connection
+
+```javascript
+import { MongoClient } from "mongodb";
+import "dotenv/config";
+
+const client = new MongoClient(process.env.MONGO_URL);
+async function run() {
+  try {
+    await client.connect();
+    const database = client.db("mobile-db"); //db name
+    const users = database.collection("users"); //db user
+    const query = { user: "Rajasekar" }; // query
+    const user = await users.findOne(query);
+    console.log(user);
+  } finally {
+    await client.close();
+  }
+
+}
+run().catch(console.dir);
+```
