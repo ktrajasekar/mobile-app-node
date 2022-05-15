@@ -1,13 +1,12 @@
 import mongoose from "mongoose";
 const { MONGO_URL } = process.env;
 
-const connectdb  = () =>
-{
-    console.log("indise")
-    mongoose
+const connectdb = () => {
+  console.log("indise");
+  mongoose
     .connect(MONGO_URL, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     })
     .then(() => {
       console.log("Successfully connected to database");
@@ -17,6 +16,6 @@ const connectdb  = () =>
       console.error(error);
       process.exit(1);
     });
-}
+};
 
 export default connectdb;
