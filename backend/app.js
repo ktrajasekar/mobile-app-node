@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import User from "./model/user.js";
 import connectdb from "./config/database.js";
 import bcrypt from "bcryptjs";
+import verifyToken from "./middleware/auth.js";
 
 const app = express();
 app.use(express.json());
@@ -32,6 +33,10 @@ app.post("/register", async (req, res) => {
   } catch (e) {
     console.log("Failed", e);
   }
+});
+
+app.post("/welcome", verifyToken, (req, res) => {
+  res.status(200).send("Welcome 🙌 ");
 });
 
 export default app;
