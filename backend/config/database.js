@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 const { MONGO_URL } = process.env;
 
 const connectdb = () => {
-  console.log("indise");
   mongoose
     .connect(MONGO_URL, {
       useNewUrlParser: true,
